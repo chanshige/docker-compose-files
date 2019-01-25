@@ -1,1 +1,6 @@
 .idea
+
+!/php-apache-with-composer/html
+/php-apache-with-composer/html/*
+
+!.gitkeep
