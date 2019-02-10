@@ -2,7 +2,7 @@ FROM php:7.1.26-apache
 
 # php extensions install
 RUN apt-get update
-RUN apt-get install -y libicu-dev libpng-dev wget unzip \
+RUN apt-get install -y libicu-dev libpng-dev wget unzip git \
       && docker-php-ext-install intl gd
 
 # composer install

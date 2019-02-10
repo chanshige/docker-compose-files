@@ -1,4 +1,4 @@
-FROM php:7.3.2-apache
+FROM php:7.3.2-cli
 
 # php extensions install
 RUN apt-get update
@@ -19,7 +19,6 @@ ENV PATH $PATH:/composer/vendor/bin
 RUN pecl install xdebug-beta \
       && docker-php-ext-enable xdebug
 
-# apache:mod_rewrite
-RUN a2enmod rewrite
-
-WORKDIR /var/www/html
+# work dir
+RUN mkdir /home/workspace
+WORKDIR /home/workspace

@@ -1,6 +1,18 @@
 # docker-compose-files
 @chanshige が使っているdocker-composeファイルを置く場所 
 
+### docker (Dockerfile box)
+
+```bash
+# build (dockerfile名を変えているので明示的に指定する)
+% docker build -t repository-name -f dockerfile-name docker-file-path
+
+# run
+% docker run -it -d --name container-name repository-name
+
+#run with mount dir
+% docker run -it -d -v /mount/path/to/dir:/home/workspace --name container-name repository-name
+```
 
 ### php-apache-with-composer
 Debian  
@@ -32,15 +44,15 @@ http://localhost:8080
 ### usage
 ```bash
 # build
-$ docker-compose build
+% docker-compose build
 
 # run
-$ docker-compose up -d
+% docker-compose up -d
 ( $ docker-compose start)
 
 # stop
-$ docker-compose stop
+% docker-compose stop
 
 # ssh
-$ docker exec -it [container_name] /bin/bash
+% docker exec -it [container_name] /bin/bash
 ```
