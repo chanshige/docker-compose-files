@@ -2,8 +2,8 @@ FROM php:5.6.40-apache
 
 # php extensions install
 RUN apt-get update
-RUN apt-get install -y libicu-dev libpng-dev \
-      && docker-php-ext-install intl gd
+RUN apt-get install -y libicu-dev libpng-dev wget unzip git \
+      && docker-php-ext-install intl gd mysqli pdo_mysql pdo_pgsql pgsql mbstring
 
 # composer install
 RUN curl -sS https://getcomposer.org/installer | php \

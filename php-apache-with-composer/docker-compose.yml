@@ -3,6 +3,7 @@ version: '3'
 services:
   php:
     container_name: php-apache-with-composer
+    image: php-apache
     build: ./.phpenv/php73
     restart: always
     ports:

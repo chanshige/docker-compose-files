@@ -4,7 +4,7 @@
 ### docker (Dockerfile box)
 
 ```bash
-# build (dockerfile名を変えているので明示的に指定する)
+# image build (dockerfile名を変えているので明示的に指定する)
 % docker build -t repository-name -f dockerfile-name docker-file-path
 
 # run

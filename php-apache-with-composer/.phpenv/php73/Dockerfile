@@ -3,7 +3,7 @@ FROM php:7.3.2-apache
 # php extensions install
 RUN apt-get update
 RUN apt-get install -y libicu-dev libpng-dev wget unzip git \
-      && docker-php-ext-install intl gd
+      && docker-php-ext-install intl gd mysqli pdo_mysql pdo_pgsql pgsql mbstring
 
 # composer install
 RUN curl -sS https://getcomposer.org/installer | php \
