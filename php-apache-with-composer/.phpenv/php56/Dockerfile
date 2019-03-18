@@ -2,7 +2,8 @@ FROM php:5.6.40-apache
 
 # php extensions install
 RUN apt-get update
-RUN apt-get install -y libicu-dev libpng-dev wget unzip git \
+RUN apt-get install -y zlib1g-dev libpq-dev libicu-dev libpng-dev wget zip unzip \
+      && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
       && docker-php-ext-install intl gd mysqli pdo_mysql pdo_pgsql pgsql mbstring
 
 # composer install

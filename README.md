@@ -1,11 +1,12 @@
 # docker-compose-files
 @chanshige が使っているdocker-composeファイルを置く場所 
 
-### docker (Dockerfile box)
-
+### dockerfiles
+Dockerfile に引数としてVERSIONをもたせているので、入れたいバージョンを指定してください。  
+引数がない場合は、各ファイルのデフォルトでbuildされます。  
 ```bash
-# image build (dockerfile名を変えているので明示的に指定する)
-% docker build -t repository-name -f dockerfile-name docker-file-path
+# image build Dockerfile
+% docker build -t repository-name -f dockerfile-name --build-arg VERSION=7.x.x docker-file-path
 
 # run
 % docker run -it -d --name container-name repository-name

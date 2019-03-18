@@ -1,4 +1,5 @@
-FROM php:7.3.2-cli
+ARG VERSION=7.2.16
+FROM php:${VERSION}-cli
 
 # php extensions install (PostgreSQL => pdo_pgsql pgsql)
 RUN apt-get update
@@ -16,7 +17,7 @@ ENV COMPOSER_HOME /composer
 ENV PATH $PATH:/composer/vendor/bin
 
 # install xdebug
-RUN pecl install xdebug-beta \
+RUN pecl install xdebug \
       && docker-php-ext-enable xdebug
 
 # work dir
