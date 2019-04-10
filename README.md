@@ -53,7 +53,13 @@ http://localhost:8080
 
 # stop
 % docker-compose stop
+```
 
+### other
+```bash
 # ssh
-% docker exec -it [container_name] /bin/bash
+% docker exec -it container_name /bin/bash
+
+# direct mysqld
+% docker exec -it db_container_name mysql -u db_user -p -D database_name
 ```

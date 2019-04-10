@@ -4,11 +4,12 @@ FROM php:${VERSION}-cli
 # php extensions install
 RUN apt-get update
 RUN apt-get install -y libicu-dev libpng-dev wget zip unzip dnsutils \
-      && docker-php-ext-install intl gd
+    && docker-php-ext-install intl gd \
+    && cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini
 
 # composer install
 RUN curl -sS https://getcomposer.org/installer | php \
-      && mv composer.phar /usr/local/bin/composer
+    && mv composer.phar /usr/local/bin/composer
 
 # composer setup
 ENV COMPOSER_ALLOW_SUPERUSER 1
@@ -18,7 +19,7 @@ ENV PATH $PATH:/composer/vendor/bin
 
 # install xdebug
 RUN pecl install xdebug \
-      && docker-php-ext-enable xdebug
+    && docker-php-ext-enable xdebug
 
 # work dir
 RUN mkdir /home/workspace

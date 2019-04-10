@@ -4,9 +4,10 @@ FROM php:${VERSION}-cli
 # php extensions install (PostgreSQL => pdo_pgsql pgsql)
 RUN apt-get update
 RUN apt-get install -y libicu-dev libpng-dev wget unzip git \
-      && docker-php-ext-install intl gd mysqli pdo_mysql mbstring
+      && docker-php-ext-install intl gd mysqli pdo_mysql mbstring \
+      && cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini
 
-# composer install
+# composer
 RUN curl -sS https://getcomposer.org/installer | php \
       && mv composer.phar /usr/local/bin/composer
 
@@ -16,7 +17,7 @@ ENV COMPOSER_NO_INTERACTION 1
 ENV COMPOSER_HOME /composer
 ENV PATH $PATH:/composer/vendor/bin
 
-# install xdebug
+# xdebug
 RUN pecl install xdebug \
       && docker-php-ext-enable xdebug
 

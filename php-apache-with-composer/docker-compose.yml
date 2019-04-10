@@ -3,14 +3,18 @@ version: '3'
 services:
   php:
     container_name: php-apache-with-composer
-    image: php-apache
-    build: ./.phpenv/php73
+    image: php72-apache
+    build:
+      context: ./.php
+      dockerfile: Dockerfile
+      args:
+        VERSION: 7.2.16
     restart: always
     ports:
       - "8000:80"
-    links:
-      - mysql
-      - redis
+#    links:
+#      - mysql or pgsql
+#      - redis
     volumes:
       - "./html:/var/www/html"
       - "./.conf/000-default.conf:/etc/apache2/sites-available/000-default.conf"
