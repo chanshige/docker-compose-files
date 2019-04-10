@@ -21,17 +21,23 @@ Apache2.4
 
 http://localhost:8000  
 
-build時にcomposerとxdebug、mod_rewriteを入れてます。
-デフォルトはphp73にしてます。 
+build時にcomposerとxdebug、mod_rewriteを入れてます。  
+デフォルトはphp7.2.16にしてますが、バージョンを変更したい場合は、  
+docker-compose.yml内 **VERSION** を修正して、build/up してください。  
+```yaml
+    build:
+      context: ./.php
+      dockerfile: Dockerfile
+      args:
+        VERSION: 7.2.16
+```
 
 ```text
 php-apache-with-composer
  ├── .conf
  │   └── 000-default.conf ← Apacheの設定ファイル
- ├── .phpenv
- │   ├── php56
- │   ├── php71
- │   └── php73
+ ├── .php
+ │   └── Dockerfile
  ├── docker-compose.yml
  └── html ← DocumentRoot（ここにアプリケーションを置く)
 ```
