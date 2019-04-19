@@ -1,4 +1,4 @@
-ARG VERSION=7.1.27
+ARG VERSION=7.1.28
 FROM php:${VERSION}-cli
 
 # php extensions install

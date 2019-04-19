@@ -1,4 +1,4 @@
-ARG VERSION=7.2.16
+ARG VERSION=7.3.4
 FROM php:${VERSION}-cli
 
 # php extensions install (PostgreSQL => pdo_pgsql pgsql)
