@@ -1,0 +1,7 @@
+/.docker/composer/auth.json/
+!/.docker/db
+/.docker/db/*
+
+
+.idea
+.DS_Store

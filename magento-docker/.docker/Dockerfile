@@ -3,9 +3,11 @@ FROM php:${VERSION}-apache
 
 # php extensions install
 RUN apt-get update
-RUN apt-get install -y zlib1g-dev libpq-dev libicu-dev libpng-dev wget zip unzip \
-    && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
-    && docker-php-ext-install intl gd mysqli pdo_mysql pdo_pgsql pgsql mbstring \
+RUN apt-get install -y zlib1g-dev libpq-dev libicu-dev libpng-dev \
+      libjpeg62-turbo-dev libfreetype6-dev libxml2-dev libxslt-dev wget zip unzip git
+
+RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+    && docker-php-ext-install zip intl gd bcmath soap xsl mysqli pdo_mysql mbstring \
     && cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini
 
 # composer install
@@ -25,4 +27,8 @@ RUN pecl install xdebug \
 # apache:mod_rewrite
 RUN a2enmod rewrite
 
+# copy magento credentials
+COPY composer/auth.json /root/.composer/
+
+# workspace
 WORKDIR /var/www/html
