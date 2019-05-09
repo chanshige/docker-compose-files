@@ -5,7 +5,7 @@ services:
     container_name: php-apache-with-composer
     image: php72-apache
     build:
-      context: ./.php
+      context: ./
       dockerfile: Dockerfile
       args:
         VERSION: 7.2.16
@@ -25,6 +25,11 @@ services:
 #    container_name: mysql_db
 #    image: mysql:5.7
 #    restart: always
+#    ports: (ローカル接続する場合)
+#     - "13306:3306"
+#    volumes: (永続化する場合)
+#     - "./.mysql:/etc/mysql/conf.d"
+#     - "./var/db:/var/lib/mysql"
 #    environment:
 #      MYSQL_ROOT_PASSWORD: password
 #      MYSQL_DATABASE: dev
