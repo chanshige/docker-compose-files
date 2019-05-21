@@ -1,5 +1,6 @@
 ARG VERSION=7.1.27
 FROM php:${VERSION}-apache
+LABEL maintainer="chanshige <dev@shigeki.tokyo>"
 
 # php extensions install
 RUN apt-get update

@@ -1,5 +1,6 @@
 ARG VERSION=7.1.28
 FROM php:${VERSION}-cli
+LABEL maintainer="chanshige <dev@shigeki.tokyo>"
 
 # php extensions install
 RUN apt-get update

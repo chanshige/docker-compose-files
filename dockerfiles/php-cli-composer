@@ -1,5 +1,6 @@
 ARG VERSION=7.3.4
 FROM php:${VERSION}-cli
+LABEL maintainer="chanshige <dev@shigeki.tokyo>"
 
 # php extensions install (PostgreSQL => pdo_pgsql pgsql)
 RUN apt-get update
