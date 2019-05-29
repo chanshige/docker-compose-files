@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  pgsql:
+    container_name: postgresql_54321_db
+    image: postgres:latest
+    ports:
+      - "54321:5432"
+    volumes:
+      - "./var/pg_data:/var/lib/postgresql/data"
+    restart: always
+    environment:
+      POSTGRES_DB: pgsql54321_db
+      POSTGRES_USER: pgsql54321_user
+      POSTGRES_PASSWORD: pgsql54321_password

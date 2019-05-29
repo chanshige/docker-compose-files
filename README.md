@@ -48,6 +48,13 @@ http://localhost:8080
 
 起動後、インストール画面
 
+### databases
+
+/var に状態を永続化するデータが作成されるので、  
+適宜移動してもらい、`container_name:` や `ports:` を変更してください。  
+※上記名前がホスト名になる。 
+
+
 ### usage
 ```bash
 # build
