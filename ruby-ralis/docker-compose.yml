@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  pgsql:
+    container_name: postgresql_rails_db
+    image: postgres:latest
+    ports:
+      - "54321:5432"
+    volumes:
+      - "./var/pg_data:/var/lib/postgresql/data"
+    restart: always
+    environment:
+      POSTGRES_DB: pgsql_rails_db
+      POSTGRES_USER: pgsql_rails_user
+      POSTGRES_PASSWORD: secret
+
+  web:
+    container_name: rails_web
+    image: ruby_image
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VERSION: 2.6.3
+    command: rails s -p 3000 -b '0.0.0.0'
+    ports:
+      - "3000:3000"
+    links:
+      - pgsql
+    volumes:
+      - "./:/home/app"
+    environment:
+      TZ: Asia/Tokyo
