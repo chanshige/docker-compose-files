@@ -4,7 +4,7 @@ LABEL maintainer="chanshige <dev@shigeki.tokyo>"
 
 # php extensions install (PostgreSQL => pdo_pgsql pgsql)
 RUN apt-get update
-RUN apt-get install -y libicu-dev libpng-dev wget unzip git \
+RUN apt-get install -y libicu-dev libpng-dev wget unzip git libonig-dev \
       && docker-php-ext-install intl gd mysqli pdo_mysql mbstring \
       && cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini
 
