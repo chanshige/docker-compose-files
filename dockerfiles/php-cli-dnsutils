@@ -1,4 +1,4 @@
-ARG VERSION=7.1.28
+ARG VERSION=7.2.26
 FROM php:${VERSION}-cli
 LABEL maintainer="chanshige <dev@shigeki.tokyo>"
 

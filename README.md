@@ -22,14 +22,14 @@ Apache2.4
 http://localhost:8000  
 
 build時にcomposerとxdebug、mod_rewriteを入れてます。  
-デフォルトはphp7.2.16にしてますが、バージョンを変更したい場合は、  
+デフォルトはphp7.2.26にしてますが、バージョンを変更したい場合は、  
 docker-compose.yml内 **VERSION** を修正して、build/up してください。  
 ```yaml
     build:
       context: ./.php
       dockerfile: Dockerfile
       args:
-        VERSION: 7.2.16
+        VERSION: 7.2.26
 ```
 
 ```text

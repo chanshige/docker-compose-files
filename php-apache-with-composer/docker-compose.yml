@@ -17,7 +17,7 @@ services:
 #      - redis
     volumes:
       - "./html:/var/www/html"
-      - "./.conf/000-default.conf:/etc/apache2/sites-available/000-default.conf"
+      - "./conf/000-default.conf:/etc/apache2/sites-available/000-default.conf"
     environment:
       TZ: Asia/Tokyo
 
@@ -28,7 +28,7 @@ services:
 #    ports: (ローカル接続する場合)
 #     - "13306:3306"
 #    volumes: (永続化する場合)
-#     - "./.mysql:/etc/mysql/conf.d"
+#     - "./mysql:/etc/mysql/conf.d"
 #     - "./var/db:/var/lib/mysql"
 #    environment:
 #      MYSQL_ROOT_PASSWORD: password
