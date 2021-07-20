@@ -1,0 +1,36 @@
+ARG VERSION=7.4
+FROM php:${VERSION}-cli
+LABEL maintainer="chanshige <dev@shigeki.tokyo>"
+
+RUN apt-get update
+RUN apt-get install -y zlib1g-dev libpq-dev libicu-dev libpng-dev libonig-dev wget zip unzip git \
+    && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
+    && docker-php-ext-install intl gd pdo_pgsql pdo_mysql mbstring \
+    && cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini
+
+# composer
+RUN curl -sS https://getcomposer.org/installer | php \
+      && mv composer.phar /usr/local/bin/composer
+
+# composer setup
+ENV COMPOSER_ALLOW_SUPERUSER 1
+ENV COMPOSER_NO_INTERACTION 1
+ENV COMPOSER_HOME /composer
+ENV PATH $PATH:/composer/vendor/bin
+
+# xdebug
+RUN pecl install xdebug \
+      && docker-php-ext-enable xdebug
+
+# swoole
+RUN git clone https://github.com/swoole/swoole-src.git \
+    && cd swoole-src \
+    && phpize \
+    && ./configure \
+    && make \
+    && make install \
+    && docker-php-ext-enable swoole
+
+# work dir
+RUN mkdir /workspace
+WORKDIR /workspace
