@@ -1,5 +1,5 @@
 # docker-compose-files
-@chanshige が使っているdocker-composeファイルを置く場所 
+dockerfileらを置く場所 
 
 ### dockerfiles
 Dockerfile に引数としてVERSIONをもたせているので、入れたいバージョンを指定してください。  
@@ -13,33 +13,6 @@ Dockerfile に引数としてVERSIONをもたせているので、入れたい�
 
 #run with mount dir
 % docker run -it -d -v /mount/path/to/dir:/home/workspace --name container-name repository-name
-```
-
-### php-apache-with-composer
-Debian  
-Apache2.4  
-
-http://localhost:8000  
-
-build時にcomposerとxdebug、mod_rewriteを入れてます。  
-デフォルトはphp7.2.26にしてますが、バージョンを変更したい場合は、  
-docker-compose.yml内 **VERSION** を修正して、build/up してください。  
-```yaml
-    build:
-      context: ./.php
-      dockerfile: Dockerfile
-      args:
-        VERSION: 7.2.26
-```
-
-```text
-php-apache-with-composer
- ├── .conf
- │   └── 000-default.conf ← Apacheの設定ファイル
- ├── .php
- │   └── Dockerfile
- ├── docker-compose.yml
- └── html ← DocumentRoot（ここにアプリケーションを置く)
 ```
 
 ### wordpress

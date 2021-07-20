@@ -1,4 +1,4 @@
-ARG VERSION=7.2.26
+ARG VERSION=7.3.29
 FROM php:${VERSION}-apache
 
 # overwrite timezone
